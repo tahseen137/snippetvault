@@ -1,51 +1,71 @@
-# 💾 SnippetVault
+# 💎 SnippetVault
 
-**Your code snippets, beautifully organized.**
+**Your code snippets, beautifully organized**
 
-SnippetVault is a code snippet manager with syntax highlighting and easy sharing. Save, organize, and share your code snippets — like GitHub Gists, but simpler and prettier.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/tahseen137/snippetvault)
 
-![Screenshot](screenshot.png)
+---
 
-## Features
+## 📖 About
 
-- 🎨 **Beautiful Syntax Highlighting** — 18+ languages supported
-- 🔍 **Search & Filter** — Find snippets instantly with tags and language filters
-- 🔗 **Easy Sharing** — Share via unique URLs with anyone
-- 🏷️ **Tags & Organization** — Keep your snippets tidy
-- 📋 **One-Click Copy** — Copy code to clipboard instantly
+**SnippetVault** is a code snippet manager with syntax highlighting and beautiful UI. Save, organize, and share your code snippets—like GitHub Gists, but simpler and prettier.
 
-## Tech Stack
+Perfect for:
+- 💻 Developers building snippet libraries
+- 📚 Saving reusable code patterns
+- 🎓 Learning and reference
+- 👥 Sharing code with teams
 
-- **Framework:** Next.js 14
-- **Language:** TypeScript
-- **Styling:** Tailwind CSS
-- **Deployment:** Vercel
+---
 
-## Getting Started
+## ✨ Features
+
+- 🎨 **Syntax Highlighting** — Beautiful code display
+- 🗂️ **Collections** — Organize by language or project
+- 🏷️ **Tags** — Categorize and filter
+- 🔍 **Search** — Find snippets fast
+- 🌐 **Public Sharing** — Share with shareable URLs
+- 📋 **Copy to Clipboard** — One-click copy
+
+---
+
+## 🚀 Getting Started
 
 ```bash
-# Clone the repository
-git clone https://github.com/yourusername/snippetvault.git
+git clone https://github.com/tahseen137/snippetvault.git
 cd snippetvault
-
-# Install dependencies
 npm install
-
-# Run development server
 npm run dev
-
-# Build for production
-npm run build
 ```
 
-## Deployment
+---
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yourusername/snippetvault)
+## 🎯 Usage
 
-## Live Demo
+1. Create a snippet
+2. Add code with language selection
+3. Tag and categorize
+4. Share or keep private
 
-🔗 [snippetvault.vercel.app](https://snippetvault-4rqwvsdfw-tahseen-rahmans-projects-58bcf065.vercel.app)
+### Supported Languages
+- JavaScript/TypeScript
+- Python
+- Go
+- Rust
+- HTML/CSS
+- And many more...
 
-## License
+---
 
-MIT
+## 🤝 Contributing
+
+Contributions welcome!
+
+---
+
+## 📝 License
+
+MIT License
+
+**Code snippets, organized beautifully 💎✨**
