@@ -14,14 +14,34 @@ export default function Dashboard() {
   const [description, setDescription] = useState('');
   const [search, setSearch] = useState('');
   const [filterLang, setFilterLang] = useState('');
+  const [error, setError] = useState('');
 
   useEffect(() => { setSnippets(storage.getAll()); }, []);
 
   const create = () => {
-    if (!code.trim()) return;
-    storage.create({ title: title || 'Untitled', language, code, tags: tags.split(',').map(t => t.trim()).filter(Boolean), description });
-    setTitle(''); setCode(''); setTags(''); setDescription(''); setShowForm(false);
-    setSnippets(storage.getAll());
+    if (!code.trim()) {
+      setError('Code is required');
+      return;
+    }
+    
+    try {
+      storage.create({ 
+        title: title || 'Untitled', 
+        language, 
+        code, 
+        tags: tags.split(',').map(t => t.trim()).filter(Boolean), 
+        description 
+      });
+      setTitle(''); 
+      setCode(''); 
+      setTags(''); 
+      setDescription(''); 
+      setShowForm(false);
+      setError('');
+      setSnippets(storage.getAll());
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'Failed to save snippet');
+    }
   };
 
   const remove = (id: string) => { storage.delete(id); setSnippets(storage.getAll()); };
@@ -44,6 +64,11 @@ export default function Dashboard() {
         {showForm && (
           <div className="bg-white/5 border border-white/10 rounded-xl p-6 mb-8">
             <h2 className="text-lg font-bold text-white mb-4">New Snippet</h2>
+            {error && (
+              <div className="mb-4 p-3 bg-red-900/30 border border-red-500/50 rounded-lg text-red-300 text-sm">
+                {error}
+              </div>
+            )}
             <div className="grid md:grid-cols-2 gap-4 mb-4">
               <input value={title} onChange={e => setTitle(e.target.value)} placeholder="Title" className="bg-white/5 border border-white/10 rounded-lg px-4 py-2 text-white placeholder-gray-500 focus:outline-none focus:border-purple-500" />
               <select value={language} onChange={e => setLanguage(e.target.value)} className="bg-gray-900 border border-white/10 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-purple-500">

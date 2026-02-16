@@ -1,4 +1,5 @@
 import { Snippet } from '@/types/snippet';
+import { validateSnippet, checkStorageQuota } from './validation';
 
 const STORAGE_KEY = 'snippetvault_snippets';
 
@@ -16,13 +17,24 @@ const storage = {
   save: (snippets: Snippet[]): void => {
     if (typeof window === 'undefined') return;
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(snippets));
+      const dataToSave = JSON.stringify(snippets);
+      
+      // Check if we have enough storage space
+      if (!checkStorageQuota(dataToSave)) {
+        throw new Error('Storage quota exceeded. Consider deleting old snippets.');
+      }
+      
+      localStorage.setItem(STORAGE_KEY, dataToSave);
     } catch (error) {
       console.error('Failed to save snippets:', error);
+      throw error; // Re-throw so UI can handle it
     }
   },
 
   create: (snippet: Omit<Snippet, 'id' | 'createdAt' | 'updatedAt'>): Snippet => {
+    // Validate input before saving
+    validateSnippet(snippet);
+    
     const snippets = storage.getAll();
     const newSnippet: Snippet = {
       ...snippet,
